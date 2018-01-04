@@ -1,2 +1,2 @@
 # speechSynthesis
-Working the the browser speech synthesizer
+Working with the the browser speech synthesizer.
