@@ -10,10 +10,6 @@ stopButton.addEventListener('click', () => toggle(false))
 
 msg.text = document.querySelector('[name="text"').value;
 
-function stopTalking(){
-	speechSynthesis.cancel();
-}
-
 function populateVoices() {
 	voices = this.getVoices();
 	const voiceOptions = voices
