@@ -6,7 +6,7 @@ const speakButton = document.querySelector('#speak');
 const stopButton = document.querySelector('#stop');
 
 speakButton.addEventListener('click', toggle);
-stopButton.addEventListener('click', stopTalking)
+stopButton.addEventListener('click', () => toggle(false))
 
 msg.text = document.querySelector('[name="text"').value;
 
@@ -17,6 +17,7 @@ function stopTalking(){
 function populateVoices() {
 	voices = this.getVoices();
 	const voiceOptions = voices
+		.filter((voice) => voice.lang.includes('en'))
 		.map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
 		.join('');
 
@@ -33,8 +34,9 @@ function setOption(){
 	toggle();
 }
 
-function toggle(){
+function toggle(startOver = true){
 	speechSynthesis.cancel();
+	if(!startOver) return;
 	speechSynthesis.speak(msg);
 }
 
